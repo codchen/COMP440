@@ -58,7 +58,6 @@ class AStarSearch(util.SearchAlgorithm):
         # Copy solution back
         self.actions = algorithm.actions
         if algorithm.totalCost != None:
-            self.totalCost = algorithm.totalCost
             self.totalCost = algorithm.totalCost + self.heuristic(problem.startState())
         else:
             self.totalCost = None

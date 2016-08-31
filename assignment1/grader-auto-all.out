@@ -1,0 +1,47 @@
+maxTotalPoints: 60
+messages: []
+mode: all
+parts:
+- maxPoints: 5
+  maxSeconds: 1
+  messages: []
+  name: 3-1a
+  points: 5
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3-1b-0
+  points: 10
+  seconds: 0
+- maxPoints: 5
+  maxSeconds: 1
+  messages: []
+  name: 3-2b
+  points: 5
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3-1b-1
+  points: 10
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3-2c-0
+  points: 10
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3-2d-0
+  points: 10
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3-2e-0
+  points: 10
+  seconds: 0
+totalPoints: 60

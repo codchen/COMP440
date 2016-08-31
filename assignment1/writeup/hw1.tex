@@ -78,9 +78,46 @@
             h(s, t) = max(|T(s, L_1) - T(L_1, t)|, |T(s, L_2) - T(L_2, t)|, ... , |T(s, L_K) - T(L_K, t)|, \frac{G(s, t)}{S_H})
         \end{eqnarray*}
         \item
-        For adding edges, $h$ will NOT remain consistent. Image the new edge draws a straight line from $s$ to $t$, then as long as the original path estimate of $h$ is not a straight line on its own, $h$ will overestimate, which makes it not only inconsistent but also not admissible. \\
+        For adding edges, $h$ will NOT remain consistent. Imagine the new edge draws a straight line from $s$ to $t$, then as long as the original path estimate of $h$ is not a straight line on its own, $h$ will overestimate, which makes it not only inconsistent but also not admissible. \\
         For removing edges, $h$ will still remain consistent. Since for any edge remains in the graph, none of the three parts in the inequality $h(m) \leq Cost(m, n) + h(n)$ will change. So $h$ will remain consistent.
     \end{itemize}
+    \newpage{}
+    \section{Package Delivery as Search}
+    \begin{itemize}
+    	\item
+    	2a
+	\begin{itemize}
+		\item
+		States: Location $(x, y)$ of the truck, a vector $S$ of length $numPackages$ where $S[i]
+		             \in \{-1, 0, 1\}$ where -1 denotes package $i$ has not been picked up, $0$ denotes
+		             package i has been picked up and not dropped off and $1$ denotes package i 
+		             has been dropped off.
+		\item
+		Actions: North, East, West, South, Pickup and Dropoff
+		\item
+		Successor: If action is North, East, West or South, update location respectively.
+		                   If action is Pickup, in the vector in state, change from -1 to 0 for the 
+		                   corresponding package.
+		                   If action is Drop-off, in the vector in state, change from 0 to 1 for the
+		                   corresponding package.
+		\item
+		Cost: If action is North, East, West or South, cost is 1 plus number of packages carried
+			 If action is Pickup or Dropoff, cost is 0.
+		
+		 \item
+		 Initial state: Truck's starting location and a vector of -1 of length number of packages to 
+		                     pickup.
+		\item
+		Goal test: If truck's location is the starting location and if the vector in the state are all 1s.
+		Number of states: $m*n*3^k$.
+	\end{itemize}
+	\item
+	2c. Number of states explored: 56 
+	\item
+	2d. Number of states explored: 34  
+	\item
+	2e. Number of states explored: 56
+   \end{itemize}
     \newpage{}
     \section{Designing Search Algorithms: Protein Folding}
     \begin{itemize}

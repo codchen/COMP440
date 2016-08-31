@@ -22,9 +22,9 @@
         Suppose the sentence length is $L$, we define the state space model as following:
         \begin{itemize}
             \item
-            $S = s_0\cup s_1\cup s_2\cup ... \cup s_L$, where, for $i = 0, 1, 2, ... L$, $s_i$ represents the state that exactly $i$ first characters have been segmented.
+            $S = s_0\cup s_1\cup s_2\cup ... \cup s_L$, where, for $i = 0, 1, 2, ... L$, $s_i$ represents the state that exactly $i$ first characters have been segmented into words.
             \item
-            $Action$ is defined as: for every word $w$ in $D$ that is a prefix from the $i$-th character in the sentence, $a_{s_i,w}$ is the action to jump to state $s_{s_i+len(w)}$.
+            $Action$ is defined as: for every word $w$ in $D$ that is a prefix of the substring that starts at the $i$-th character in the sentence, $a_{s_i,w}$ is the action to jump to state $s_{s_i+len(w)}$.
             \item
             $Successor(s_i, a_{i,w}) = s_{i+len(w)}$
             \item
@@ -68,6 +68,7 @@
         \begin{eqnarray*}
             h(s, t) = |T(s, L) - T(L, t)|
         \end{eqnarray*}
+        Proof: Suppose there is a neighbour node $n$, then we need to prove that $h(s, t) \leq Cost(s, n) + h(n, t)$. Consider all sign combinations of $T(s, L) - T(L, t)$ and $T(n, L) - T(L, t)$ with the fact that $T(s, L) \leq Cost(s, n) + T(n, L)$ (triangular inequality), we see that $h(s, t) \leq Cost(s, n) + h(n, t)$ holds at all time.
         \item
         Suppose the goal node is $t$, it is trivial that $h(t) = h_1(t) = h_2(t) = 0$.
         Consider any pair of node $n$ and $m$ where there is an action to get $m$ from $n$. Suppose $h_1(n) \geq h_2(n)$, then $h(n) = h_1(n)$ and there are two possibilities: first, $h_1(m) \geq h_2(m)$, which makes $h(m) = h_1(m)$ and obviously makes $h$ consistent on $n$ and $m$ ($h$ is exactly $h_1$); second, $h_1(m) < h_2(m)$, then since $h(n) = h_1(n) \leq Cost(n,m) + h_1(m) < Cost(n,m) + h_2(m)$, $h$ is also consistent on $n$ and $m$. So $h$ will always be consistent in this case\\

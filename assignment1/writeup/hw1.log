@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  30 AUG 2016 14:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  31 AUG 2016 00:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -383,7 +383,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--63
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 98--118
+Underfull \hbox (badness 10000) in paragraph at lines 99--119
 
  []
 
@@ -408,7 +408,7 @@ pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on hw1.pdf (4 pages, 137455 bytes).
+Output written on hw1.pdf (4 pages, 137836 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream

@@ -27,7 +27,7 @@ class SearchAlgorithm:
 # Uniform cost search algorithm (Dijkstra's algorithm).
 
 class UniformCostSearch(SearchAlgorithm):
-    def __init__(self, verbose=0):
+    def __init__(self, verbose=1):
         self.verbose = verbose
 
     def solve(self, problem):

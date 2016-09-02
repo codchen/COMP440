@@ -146,7 +146,7 @@
     \tab\tab randomly mutate each new-born conformation at chance $0.4$, by randomly altering one \tab\tab of its direction.\\
     \tab return the conformation with the lowest cost\\
     Time Complexity: $O(l*m*n(log(n))$, where $l$ is the length of the input sequence, $m$ is the iteration limits, and $n$ is the population size. ($nlog(n)$ because of the sort)\\
-    Space Complexity is similar to time complexity: $O(l*n)$. \\
+    Space Complexity: $O(l*n)$. \\
     This algorithm is not guaranteed to find an optimal solution because it's a local search algorithm that can only provide an approximately good solution.
     \item
     Run proteinFolding.py that is attached.

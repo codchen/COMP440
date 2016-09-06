@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[]{algorithm2e}
+\usepackage[noend]{algpseudocode}
+\usepackage{float}
+\title{COMP 440 Homework 2}
+\author{Tony Chen(xc12) and Adam Wang(sw33)}
+\date{September 2016}
+\begin{document}
+\begin{onehalfspace}
+\section{Pursuit evasion games}
+ \renewcommand{\theenumi}{\alph{enumi}}
+    \begin{enumerate}
+    \item Copy of game tree, with terminal utility denoted:\\
+     \includegraphics[width=16cm, height=9cm]{1_a.png}\\
+     \item The inference of each internal node's value is labeled:\\
+     \includegraphics[width=16cm, height=9cm]{1_b.png}\\
+     \item Name added:\\
+     \includegraphics[width=16cm, height=9cm]{1_c.png}\\
+     \item
+     For a given internal node $PE$, an upper bound of its value is the negative of sum of 1) the cost so far to reach this node (i.e. the path sum from it to the root) and 2) the shortest path between $P$ and $E$. For the negative sum, the former cost has already occurred as a truth, and the latter must not be an overestimate, so their negative sum gives the upper bound. Following this conclusion, we can get bounds as following: $V(cd) <= -(1+1) = -2$, $V(ce) <= -(2+2) = -4$, $V(de) <= -(3+1) = -4$, $V(cf) <= -(2+2) = -4$, $V(df) <= -(3+1) = -4$, $V(ad) <= -(1+3) = -4$, $V(ae) <= -(2+4) = -6$, $V(af) <= -(2+4) = -6$, $V(ac) <= -(2+2) = -4$\\
+     For the new nodes in (c), the bounds are: $V(be) = -(3+3) = -6$, $V(bf) = -(3+3) = -6$, $V(be) = -(3+3) = -6$, $V(bf) = -(3+3) = -6$, and $V(bc) = -(3+1) = -4$\\
+     Note that, however, the bounds based on shortest-path is loose since it expects the Evader to "cooperate", which will not happen in a standard setting. So in part(b) the values for some of those internal nodes are much tighter.\\
+     \item $be$ need not to be expanded because we already got $-4$ from $de$ (maximum here), and after we got $V(df) = -4$, we don't need to consider $bf$ because if it's larger than $-4$ then $cf$ will be larger than $-4$ and $cd$ will still take minimum ($-4$) from $ce$; if it's smaller than $-4$ then $cf$ will take $-4$ from $df$. $be$ will not be expanded because $bd$ will take the maximum between $cd$ ($-4$) and $ad$, and since $ad$ will take the minimum of $ae$, $af$, and $ac$, $bf$ and $bc$ will not even be considered (the value up to $-6$ at $ae$ already capped $ad$ from being chosen by $bd$ over $cd$).\\
+     \includegraphics[width=16cm, height=9cm]{1_e.png}\\
+     \item
+     If the tree is finite, then the Pursuer will always win. This can be proved recursively:\\
+     Initially, move the Pursuer up until it's at the lowest common ancestor node of P and E (this can always be achieved in finite steps since the Pursuer can always move up to the root of the entire tree).\\
+     Consider the subtree whose root is the node where the Pursuer is. \\
+     Base case: there is only one node in the subtree, in which case both the Pursuer and the Evader are on that node and the Pursuer catches the Evader.\\
+     Recursive case: if the Evader is also on this root then the Pursuer already catches the Evader. Otherwise move the Pursuer down to the subtree child that contains the Evader.\\
+    \end{enumerate}
+\end{onehalfspace}
+\end{document}

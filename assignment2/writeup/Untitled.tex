@@ -36,5 +36,20 @@
      Base case: there is only one node in the subtree, in which case both the Pursuer and the Evader are on that node and the Pursuer catches the Evader.\\
      Recursive case: if the Evader is also on this root then the Pursuer already catches the Evader. Otherwise move the Pursuer down to the subtree child that contains the Evader.\\
     \end{enumerate}
+\section{Minimax and expectimax}
+\begin{itemize}
+\item The values outside the parentheses are minimax, and the values inside the parentheses are expectimax:\\
+\includegraphics[width=12cm, height=9cm]{2_1.png}\\
+\item
+It is not possible.\\
+Consider any Player 2 node $s_0$ and all of its children nodes $s_1,s_2,...,s_n$. For minimax we have $V_{min}(s_0) = Min(V(s_1), V(s_2), ..., V(s_n))$; for expectimax we have $V_{exp}(s_0) = Avg(V(s_1), V(s_2), ..., V(s_n)) \leq Min(V(s_1), V(s_2), ..., V(s_n)) = V_{min}(s_0)$. So it is not possible for a root node to have a larger value by minimax than by expectimax.\\
+\item
+Assumption: Player 2 is a perfect player that makes the best possible move every turn\\
+\item
+Assumption: Player 2 is a stochastic player whose moves can be described by some statistical distribution.\\
+\item
+1. Preprocess: Go through the game tree by substituting all Player 1 nodes (max nodes) with uniform chance nodes and record which child node Player 2 will pick at each min node.\\
+2. Actual play: Go through the game tree with the knowledge of which child node Player 2 will pick at each node. Essentially Player 2 nodes are no longer min nodes but nodes the follow the outcome policy of the preprocess.\\
+\end{itemize}
 \end{onehalfspace}
 \end{document}

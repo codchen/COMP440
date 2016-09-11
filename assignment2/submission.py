@@ -161,8 +161,46 @@ class MinimaxAgent(MultiAgentSearchAgent):
     """
 
     # BEGIN_YOUR_CODE (around 35 lines of code expected)
-    raise Exception("Not implemented yet")
+    v, move = self.value(gameState, self.depth)
+    return move
     # END_YOUR_CODE
+
+  def isTerminal(self, s):
+    return s.isWin() or s.isLose() or len(s.getLegalActions()) == 0
+
+  def value(self, s, d, agentIndex=0):
+    if d == 0 or self.isTerminal(s):
+      return self.evaluationFunction(s), None
+    elif agentIndex == 0:
+      return self.maxValue(s, d)
+    else:
+      return self.minValue(s, d, agentIndex)
+
+  def maxValue(self, s, d):
+    v = float('-inf')
+    bestMove = None
+    legalMoves = s.getLegalActions()
+    nextAgent = 1 % s.getNumAgents()
+    for move in legalMoves:
+      if move == Directions.STOP:
+        continue
+      succVal = self.value(s.generatePacmanSuccessor(move),d-1 if nextAgent == 0 else d,1)[0]
+      if succVal > v:
+        v = succVal
+        bestMove = move
+    return v, bestMove
+
+  def minValue(self, s, d, agentIndex):
+    v = float('inf')
+    bestMove = None
+    legalMoves = s.getLegalActions(agentIndex)
+    nextAgent = (agentIndex + 1) % s.getNumAgents()
+    for move in legalMoves:
+      succVal = self.value(s.generateSuccessor(agentIndex, move),d-1 if nextAgent == 0 else d,nextAgent)[0]
+      if succVal < v:
+        v = succVal
+        bestMove = move
+    return v, bestMove
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
   """
@@ -183,8 +221,48 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     """
 
     # BEGIN_YOUR_CODE (around 45 lines of code expected)
-    raise Exception("Not implemented yet")
+    v, move = self.value(gameState, self.depth)
+    return move
     # END_YOUR_CODE
+
+  def isTerminal(self, s):
+    return s.isWin() or s.isLose() or len(s.getLegalActions()) == 0
+
+  def value(self, s, d, lowerBound=float('-inf'), upperBound=float('inf'), agentIndex=0):
+    if d == 0 or self.isTerminal(s):
+      return self.evaluationFunction(s), None
+    elif agentIndex == 0:
+      return self.maxValue(s, d, lowerBound, upperBound)
+    else:
+      return self.minValue(s, d, lowerBound, upperBound, agentIndex)
+
+  def maxValue(self, s, d, lowerBound, upperBound):
+    bestMove = None
+    legalMoves = s.getLegalActions()
+    nextAgent = 1 % s.getNumAgents()
+    for move in legalMoves:
+      if move == Directions.STOP:
+        continue
+      succVal = self.value(s.generatePacmanSuccessor(move),d-1 if nextAgent == 0 else d,lowerBound,upperBound,nextAgent)[0]
+      if succVal > lowerBound:
+        lowerBound = succVal
+        bestMove = move
+      if lowerBound >= upperBound:
+        return upperBound, None
+    return lowerBound, bestMove
+
+  def minValue(self, s, d, lowerBound, upperBound, agentIndex):
+    bestMove = None
+    legalMoves = s.getLegalActions(agentIndex)
+    nextAgent = (agentIndex + 1) % s.getNumAgents()
+    for move in legalMoves:
+      succVal = self.value(s.generateSuccessor(agentIndex, move),d-1 if nextAgent == 0 else d,lowerBound,upperBound,nextAgent)[0]
+      if succVal < upperBound:
+        upperBound = succVal
+        bestMove = move
+      if upperBound <= lowerBound:
+        return lowerBound, None
+    return upperBound, bestMove
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
   """
@@ -208,8 +286,42 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
     """
 
     # BEGIN_YOUR_CODE (around 35 lines of code expected)
-    raise Exception("Not implemented yet")
+    v, move = self.value(gameState, self.depth)
+    return move
     # END_YOUR_CODE
+
+  def isTerminal(self, s):
+    return s.isWin() or s.isLose() or len(s.getLegalActions()) == 0
+
+  def value(self, s, d, agentIndex=0):
+    if d == 0 or self.isTerminal(s):
+      return self.evaluationFunction(s), None
+    elif agentIndex == 0:
+      return self.maxValue(s, d)
+    else:
+      return self.expValue(s, d, agentIndex)
+
+  def maxValue(self, s, d):
+    v = float('-inf')
+    bestMove = None
+    legalMoves = s.getLegalActions()
+    nextAgent = 1 % s.getNumAgents()
+    for move in legalMoves:
+      if move == Directions.STOP:
+        continue
+      succVal = self.value(s.generatePacmanSuccessor(move),d-1 if nextAgent == 0 else d,1)[0]
+      if succVal > v:
+        v = succVal
+        bestMove = move
+    return v, bestMove
+
+  def expValue(self, s, d, agentIndex):
+    v = 0.0
+    legalMoves = s.getLegalActions(agentIndex)
+    nextAgent = (agentIndex + 1) % s.getNumAgents()
+    for move in legalMoves:
+      v += self.value(s.generateSuccessor(agentIndex, move),d-1 if nextAgent == 0 else d,nextAgent)[0]
+    return v / len(legalMoves), random.choice(legalMoves)
 
 def betterEvaluationFunction(currentGameState):
   """

@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage[]{algorithm2e}
+\usepackage{amsmath}
 \usepackage[noend]{algpseudocode}
 \usepackage{float}
 \title{COMP 440 Homework 2}
@@ -50,6 +51,45 @@ Assumption: Player 2 is a stochastic player whose moves can be described by some
 \item
 1. Preprocess: Go through the game tree by substituting all Player 1 nodes (max nodes) with uniform chance nodes and record which child node Player 2 will pick at each min node.\\
 2. Actual play: Go through the game tree with the knowledge of which child node Player 2 will pick at each node. Essentially Player 2 nodes are no longer min nodes but nodes the follow the outcome policy of the preprocess.\\
+\end{itemize}
+\section{Multi-agent pacman}
+\subsection{Warmup}
+\subsection{Problem 1: Minimax}
+\begin{itemize}
+\item
+Assuming $isEnd(s)$ also returns $True$ if $depth(s) = 0$:
+\[
+    V_{opt}(s)=
+    \begin{cases}
+    Evaluation(s) & \text{if } isEnd(s)\\
+    Max(V_{opt}(Successor)\: \forall \: Successor \in Actions(s)) & \text{if NOT } isEnd(s) \text{ AND } Player(s) \text{ is } a_0\\ 
+    Min(V_{opt}(Successor)\: \forall \: Successor \in Actions(s)) & \text{Otherwise}
+    \end{cases}
+\]
+\end{itemize}
+\subsubsection{Observations}
+\begin{itemize}
+\item
+The reason that pacman thrash around right next to a dot is that the Minimax depth is so small that pacman does not know what to do after eating the dot.\\
+\item
+Since pacman applies Minimax policy, in this case either going left or right will result in death, so he wants to die as soon as possible since there is a time penalty and dying sooner will result in a relatively higher score.\\
+\end{itemize}
+\subsection{Problem 2: Alpha-beta pruning}
+\subsection{Problem 3: Expectimax}
+\begin{itemize}
+\item
+Assuming $isEnd(s)$ also returns $True$ if $depth(s) = 0$:
+\[
+    V_{opt,\pi}(s)=
+    \begin{cases}
+    Evaluation(s) & \text{if } isEnd(s)\\
+    Max(V_{opt,\pi}(Successor)\: \forall \: Successor \in Actions(s)) & \text{if NOT } isEnd(s) \text{ AND } Player(s) \text{ is } a_0\\ 
+    \frac{\sum(V_{opt,\pi}(Successor)\: \forall \: Successor \in Actions(s))}{Len(Actions(s))} & \text{Otherwise}
+    \end{cases}
+\]
+\item
+In the trappedClassic case, since pacman applies Expectimax now, instead of thinking both ways are dead ends, he'd see now that going left would have a chance of winning since he knows ghost agents are random (i.e. not optimal) while going right would still be a sure way to die. So now his decision is different from its Minimax version.\\
+
 \end{itemize}
 \end{onehalfspace}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  8 SEP 2016 23:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  11 SEP 2016 15:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -260,18 +260,18 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (./Untitled.aux)
 \openout1 = `Untitled.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -371,30 +371,30 @@ Package caption Info: End \AtBeginDocument code.
 <1_a.png, id=1, 764.8575pt x 483.8075pt>
 File: 1_a.png Graphic file (type png)
  <use 1_a.png>
-Package pdftex.def Info: 1_a.png used on input line 21.
+Package pdftex.def Info: 1_a.png used on input line 22.
 (pdftex.def)             Requested size: 455.24174pt x 256.08455pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
 <1_b.png, id=3, 781.92125pt x 482.80376pt>
 File: 1_b.png Graphic file (type png)
  <use 1_b.png>
-Package pdftex.def Info: 1_b.png used on input line 23.
+Package pdftex.def Info: 1_b.png used on input line 24.
 (pdftex.def)             Requested size: 455.24466pt x 256.08368pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
 <1_c.png, id=4, 778.91pt x 481.8pt>
 File: 1_c.png Graphic file (type png)
  <use 1_c.png>
-Package pdftex.def Info: 1_c.png used on input line 25.
+Package pdftex.def Info: 1_c.png used on input line 26.
 (pdftex.def)             Requested size: 455.2386pt x 256.0806pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--27
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
 
  []
 
@@ -402,44 +402,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--27
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./1_a.p
 ng> <./1_b.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 27--30
+Underfull \hbox (badness 10000) in paragraph at lines 28--31
 
  []
 
 <1_e.png, id=14, 786.94pt x 493.845pt>
 File: 1_e.png Graphic file (type png)
  <use 1_e.png>
-Package pdftex.def Info: 1_e.png used on input line 31.
+Package pdftex.def Info: 1_e.png used on input line 32.
 (pdftex.def)             Requested size: 455.23676pt x 256.06993pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--33
+Underfull \hbox (badness 10000) in paragraph at lines 31--34
 
  []
 
 [2 <./1_c.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 33--38
+Underfull \hbox (badness 10000) in paragraph at lines 34--39
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 41.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
 
 <2_1.png, id=21, 375.4025pt x 277.035pt>
 File: 2_1.png Graphic file (type png)
  <use 2_1.png>
-Package pdftex.def Info: 2_1.png used on input line 42.
+Package pdftex.def Info: 2_1.png used on input line 43.
 (pdftex.def)             Requested size: 341.45642pt x 256.0758pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--44
+Underfull \hbox (badness 10000) in paragraph at lines 42--45
 
  []
 
 [3 <./1_e.png>]
-Overfull \hbox (35.34708pt too wide) in paragraph at lines 44--47
+Overfull \hbox (35.34708pt too wide) in paragraph at lines 45--48
 \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/
 10.95 ) = \OML/cmm/m/it/10.95 Min\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 V\OT1/
 cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;
@@ -454,45 +454,77 @@ cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; :::; V\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--47
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--51
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--53
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-[4 <./2_1.png>] (./Untitled.aux) ) 
+
+Overfull \hbox (15.02756pt too wide) detected at line 68
+\OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10
+.95 ) = []
+ []
+
+[4 <./2_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 73--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+
+Overfull \hbox (30.08609pt too wide) detected at line 89
+\OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10
+.95 ) = []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+[5] (./Untitled.aux) ) 
 Here is how much of TeX's memory you used:
- 5681 strings out of 493089
- 83881 string characters out of 6134842
+ 5685 strings out of 493089
+ 83934 string characters out of 6134842
  178686 words of memory out of 5000000
- 9102 multiletter control sequences out of 15000+600000
- 7658 words of font info for 28 fonts, out of 8000000 for 9000
+ 9105 multiletter control sequences out of 15000+600000
+ 8571 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,4n,38p,684b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb>
-Output written on Untitled.pdf (4 pages, 405566 bytes).
+ 38i,9n,38p,684b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cmextra/cmex8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy8.pfb>
+Output written on Untitled.pdf (5 pages, 456958 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,29 @@
+maxTotalPoints: 65
+messages: []
+mode: all
+parts:
+- maxPoints: 10
+  maxSeconds: 1
+  messages: [File 'writeup.pdf' does not exist]
+  name: writeupValid
+  points: 0
+  seconds: 0
+- maxPoints: 20
+  maxSeconds: 1
+  messages: []
+  name: 3.2b
+  points: 20
+  seconds: 0
+- maxPoints: 10
+  maxSeconds: 1
+  messages: []
+  name: 3.3b
+  points: 10
+  seconds: 0
+- maxPoints: 25
+  maxSeconds: 1
+  messages: []
+  name: '3.4'
+  points: 25
+  seconds: 0
+totalPoints: 55

@@ -74,7 +74,6 @@ class GameState:
     """
     # Check that successors exist
     if self.isWin() or self.isLose(): raise Exception('Can\'t generate a successor of a terminal state.')
-
     # Copy current state
     state = GameState(self)
 

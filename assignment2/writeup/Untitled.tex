@@ -89,7 +89,23 @@ Assuming $isEnd(s)$ also returns $True$ if $depth(s) = 0$:
 \]
 \item
 In the trappedClassic case, since pacman applies Expectimax now, instead of thinking both ways are dead ends, he'd see now that going left would have a chance of winning since he knows ghost agents are random (i.e. not optimal) while going right would still be a sure way to die. So now his decision is different from its Minimax version.\\
-
+\end{itemize}
+\section{Expectimax search and pruning}
+\begin{itemize}
+\item
+No. The max value at the next node can always be higher since there is no bound.
+\item
+No. Same reason as max tree. And also you have to compute values over all nodes to get expected value.
+\item
+Yes.
+\includegraphics[width=16cm, height=9cm]{4_c.png}\\
+The right children of the root can be pruned since the left children already achieves the maximum possible in the range.
+\item
+Yes.
+\includegraphics[width=16cm, height=9cm]{4_d.png}\\
+The right most node can be pruned since we already know it is impossible to beat the max from the left with the values in the range.
+\item
+If the tree could be pruned, then (b) order by highest probability first is most likely to yield pruning opportunities because it is more likely that you calculate the major value out of the high probability branch and see if it is possible to achieve larger expectations from the rest branch. If the values are not bounded,  the evaluation order does not matter.
 \end{itemize}
 \end{onehalfspace}
 \end{document}

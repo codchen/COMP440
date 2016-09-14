@@ -325,7 +325,6 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 
 
 import search
-
 def betterEvaluationFunction(currentGameState):
   """
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
@@ -389,21 +388,24 @@ def betterEvaluationFunction(currentGameState):
   if distanceToFood != None:
     score += 30.0 / distanceToFood
   distanceToGhost = 999999
+  bonus = False
   if numGhost > 0:
     for i in range(numGhost):
       ghostState = currentGameState.getGhostState(i + 1)
       distance = util.manhattanDistance(ghostState.getPosition(), currentGameState.getPacmanPosition())
       # Ghost is scared!
       if ghostState.scaredTimer > 0:
-        # If the ghost is scared, it is better to get close to the ghost and try to eat it.
-        if (ghostState.scaredTimer > 3 and distance < ghostState.scaredTimer):
-          score += 20.0 / distance * 50.0
-        elif (ghostState.scaredTimer <= 3):
-          # The ghost is about to get back to normal, start avoiding
-          score -= 10.0 * 5.0 / ghostState.scaredTimer
-        else:
-          # It is not possible to eat the within scared time since it is too far.
-          continue
+        if not bonus:
+          bonus = True
+          # If the ghost is scared, it is better to get close to the ghost and try to eat it.
+          if (ghostState.scaredTimer > 3 and distance < ghostState.scaredTimer):
+            score += 20.0 / distance * 50.0
+          elif (ghostState.scaredTimer <= 3):
+            # The ghost is about to get back to normal, start avoiding
+            score -= 10.0 * 5.0 / ghostState.scaredTimer
+          else:
+            # It is not possible to eat the within scared time since it is too far.
+            continue
       else:
         # Find the distance to the nearest ghost
         if (distance < distanceToGhost):

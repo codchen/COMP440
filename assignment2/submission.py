@@ -323,6 +323,9 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
       v += self.value(s.generateSuccessor(agentIndex, move),d-1 if nextAgent == 0 else d,nextAgent)[0]
     return v / len(legalMoves), random.choice(legalMoves)
 
+
+import search
+
 def betterEvaluationFunction(currentGameState):
   """
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
@@ -330,9 +333,34 @@ def betterEvaluationFunction(currentGameState):
 
     DESCRIPTION: <write something here so we know what you did>
   """
-
+  score = 0
+  problemFood = search.createPacmanFoodSearchProblem(currentGameState)
+  algorithm = search.UniformCostSearch()
+  algorithm.solve(problemFood)
+  distanceToFood = algorithm.totalCost
+  numCap = len(currentGameState.getCapsules())
+  numFoodLeft = currentGameState.getNumFood()
+  score -= numCap * 15
+  score -= numFoodLeft * 35
+  if distanceToFood != None:
+    score += 30.0 / distanceToFood
+  score -= currentGameState.getNumAgents() * 5
+  distanceToGhost = 99999
+  for pos in currentGameState.getGhostPositions():
+    distance = util.manhattanDistance(pos, currentGameState.getPacmanPosition())
+    if (distance < distanceToGhost):
+      distanceToGhost = distance
+  if (distanceToGhost == 0):
+    score -= 1500
+  elif (distanceToGhost <= 2):
+    score -= 100 * 10.0 / distanceToGhost
+  else:
+    score -= 15.0 / distanceToGhost
+  # print distanceToGhost, distanceToFood, numFoodLeft
+  return score
   # BEGIN_YOUR_CODE (around 50 lines of code expected)
-  raise Exception("Not implemented yet")
+  # Distance to 
+  #  - Distance to closest ghost
   # END_YOUR_CODE
 
 # Abbreviation

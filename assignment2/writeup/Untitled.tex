@@ -43,7 +43,7 @@
 \includegraphics[width=12cm, height=9cm]{2_1.png}\\
 \item
 It is not possible.\\
-Consider any Player 2 node $s_0$ and all of its children nodes $s_1,s_2,...,s_n$. For minimax we have $V_{min}(s_0) = Min(V(s_1), V(s_2), ..., V(s_n))$; for expectimax we have $V_{exp}(s_0) = Avg(V(s_1), V(s_2), ..., V(s_n)) \leq Min(V(s_1), V(s_2), ..., V(s_n)) = V_{min}(s_0)$. So it is not possible for a root node to have a larger value by minimax than by expectimax.\\
+Consider any Player 2 node $s_0$ and all of its children nodes $s_1,s_2,...,s_n$. For minimax we have $V_{min}(s_0) = Min(V(s_1), V(s_2), ..., V(s_n))$; for expectimax we have $V_{exp}(s_0) = Avg(V(s_1), V(s_2), ..., V(s_n)) \geq Min(V(s_1), V(s_2), ..., V(s_n)) = V_{min}(s_0)$. So it is not possible for a root node to have a larger value by minimax than by expectimax.\\
 \item
 Assumption: Player 2 is a perfect player that makes the best possible move every turn\\
 \item

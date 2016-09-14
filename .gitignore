@@ -4,3 +4,4 @@ assignment1/writeup/hw1.pdf
 *.pbm
 game/*
 search/*
+*.pyc

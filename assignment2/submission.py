@@ -372,7 +372,7 @@ def betterEvaluationFunction(currentGameState):
     return 9999
   elif (currentGameState.isLose()):
     return -9999
-  score = 0
+  score = currentGameState.getScore()
   numGhost = currentGameState.getNumAgents() - 1
   problemFood = search.createPacmanFoodSearchProblem(currentGameState)
   algorithm = search.UniformCostSearch()
@@ -383,10 +383,8 @@ def betterEvaluationFunction(currentGameState):
   numFoodLeft = currentGameState.getNumFood()
   # Small penalty to number of capsules left to encourage eating it.
   score -= numCap * 15.0
-  # Large penalty to number of food left.
-  score -= numFoodLeft * 35.0
   if distanceToFood != None:
-    score += 30.0 / distanceToFood
+    score += 10.0 / distanceToFood
   distanceToGhost = 999999
   bonus = False
   if numGhost > 0:
@@ -399,7 +397,7 @@ def betterEvaluationFunction(currentGameState):
           bonus = True
           # If the ghost is scared, it is better to get close to the ghost and try to eat it.
           if (ghostState.scaredTimer > 3 and distance < ghostState.scaredTimer):
-            score += 20.0 / distance * 50.0
+            score += 20.0 / distance * 5.0
           elif (ghostState.scaredTimer <= 3):
             # The ghost is about to get back to normal, start avoiding
             score -= 10.0 * 5.0 / ghostState.scaredTimer

@@ -331,36 +331,94 @@ def betterEvaluationFunction(currentGameState):
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
     evaluation function (problem 4).
 
-    DESCRIPTION: <write something here so we know what you did>
+    DESCRIPTION:
+      The evaluation function calculates a score which is a linear combination of the 
+      features with different weights.
+      Features:
+        number of food left
+        distance to nearest food
+        distance to nearest ghost
+        number of capsules left
+        ghost scared time
+      Since the priority goal is to let pacman win, the first 3 features have higher
+      weights. The second goal is to get higher score (by eating capsules and ghosts),
+      the last 2 features have smaller weights.
+
+      Number of food left: 
+        Since the pacman only wins by eating all the food, the
+        number of food left has a relatively high negative weight so that the more
+        food pacman eats, the better.
+      Distance to nearest food:
+        The closer to the food, the better. The distance is calculated
+        using UCS search and use a simple weight / distance function to
+        reflect the property that the closer to food, the higher the score should be.
+      Distance to nearest ghost:
+        The pacman dies if the it collides with the ghost. The farther the pacman
+        is to the ghosts, the better. The distance to the nearest ghost is calculated
+        by choosing the minimum of the manhattanDistance between the pacman and all
+        the ghosts, since it is the most dangerous agent. A special check is applied
+        that if the distance gets close to less than 3, there will be a large penalty
+        to the score.
+      Number of capsules left:
+        A small penalty is applied if there are more capsules left. This is to
+        encourage the pacman to eat capsules to get some time of safety.
+      Ghost scared time:
+        If the ghost is scared, the closer the pacman is to the ghost, the better chance
+        the ghost will be eaten. So there is a relatively high positive weight associated
+        with the scared time. However, if the scared time is about to expire, it is better
+        for the pacman to start avoiding the ghost. So a special check for the scared time
+        is applied.
   """
+  if (currentGameState.isWin()):
+    return 9999
+  elif (currentGameState.isLose()):
+    return -9999
   score = 0
+  numGhost = currentGameState.getNumAgents() - 1
   problemFood = search.createPacmanFoodSearchProblem(currentGameState)
   algorithm = search.UniformCostSearch()
   algorithm.solve(problemFood)
+  # Find the distance to nearest food using UCS.
   distanceToFood = algorithm.totalCost
   numCap = len(currentGameState.getCapsules())
   numFoodLeft = currentGameState.getNumFood()
-  score -= numCap * 15
-  score -= numFoodLeft * 35
+  # Small penalty to number of capsules left to encourage eating it.
+  score -= numCap * 15.0
+  # Large penalty to number of food left.
+  score -= numFoodLeft * 35.0
   if distanceToFood != None:
     score += 30.0 / distanceToFood
-  score -= currentGameState.getNumAgents() * 5
-  distanceToGhost = 99999
-  for pos in currentGameState.getGhostPositions():
-    distance = util.manhattanDistance(pos, currentGameState.getPacmanPosition())
-    if (distance < distanceToGhost):
-      distanceToGhost = distance
-  if (distanceToGhost == 0):
-    score -= 1500
-  elif (distanceToGhost <= 2):
-    score -= 100 * 10.0 / distanceToGhost
-  else:
-    score -= 15.0 / distanceToGhost
-  # print distanceToGhost, distanceToFood, numFoodLeft
+  distanceToGhost = 999999
+  if numGhost > 0:
+    for i in range(numGhost):
+      ghostState = currentGameState.getGhostState(i + 1)
+      distance = util.manhattanDistance(ghostState.getPosition(), currentGameState.getPacmanPosition())
+      # Ghost is scared!
+      if ghostState.scaredTimer > 0:
+        # If the ghost is scared, it is better to get close to the ghost and try to eat it.
+        if (ghostState.scaredTimer > 3 and distance < ghostState.scaredTimer):
+          score += 20.0 / distance * 50.0
+        elif (ghostState.scaredTimer <= 3):
+          # The ghost is about to get back to normal, start avoiding
+          score -= 10.0 * 5.0 / ghostState.scaredTimer
+        else:
+          # It is not possible to eat the within scared time since it is too far.
+          continue
+      else:
+        # Find the distance to the nearest ghost
+        if (distance < distanceToGhost):
+          distanceToGhost = distance
+    if (distanceToGhost != 999999):
+      # About to be eaten, large penalty.
+      if (distanceToGhost <= 1):
+        score -= 99999
+      # Large penalty to very close ghosts, the closer, the larger the penalty
+      elif (distanceToGhost <= 3):
+        score -= 100 * 10.0 / distanceToGhost
+      else:
+        score -= 15.0 / distanceToGhost
   return score
-  # BEGIN_YOUR_CODE (around 50 lines of code expected)
-  # Distance to 
-  #  - Distance to closest ghost
+  # BEGIN_YOUR_CODE (around 50 lines of code expected) 
   # END_YOUR_CODE
 
 # Abbreviation

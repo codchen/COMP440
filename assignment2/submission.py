@@ -332,21 +332,19 @@ def betterEvaluationFunction(currentGameState):
 
     DESCRIPTION:
       The evaluation function calculates a score which is a linear combination of the 
-      features with different weights.
+      features with different weights. The score is initialized with the current game
+      state score.
+      Intercept:
+        current game state score
       Features:
-        number of food left
         distance to nearest food
         distance to nearest ghost
         number of capsules left
         ghost scared time
-      Since the priority goal is to let pacman win, the first 3 features have higher
+      Since the priority goal is to let pacman win, the first 2 features have higher
       weights. The second goal is to get higher score (by eating capsules and ghosts),
       the last 2 features have smaller weights.
 
-      Number of food left: 
-        Since the pacman only wins by eating all the food, the
-        number of food left has a relatively high negative weight so that the more
-        food pacman eats, the better.
       Distance to nearest food:
         The closer to the food, the better. The distance is calculated
         using UCS search and use a simple weight / distance function to
@@ -368,10 +366,12 @@ def betterEvaluationFunction(currentGameState):
         for the pacman to start avoiding the ghost. So a special check for the scared time
         is applied.
   """
+  # BEGIN_YOUR_CODE (around 50 lines of code expected)
   if (currentGameState.isWin()):
     return 9999
   elif (currentGameState.isLose()):
     return -9999
+  # Initialize with current game state score
   score = currentGameState.getScore()
   numGhost = currentGameState.getNumAgents() - 1
   problemFood = search.createPacmanFoodSearchProblem(currentGameState)
@@ -380,7 +380,6 @@ def betterEvaluationFunction(currentGameState):
   # Find the distance to nearest food using UCS.
   distanceToFood = algorithm.totalCost
   numCap = len(currentGameState.getCapsules())
-  numFoodLeft = currentGameState.getNumFood()
   # Small penalty to number of capsules left to encourage eating it.
   score -= numCap * 15.0
   if distanceToFood != None:
@@ -400,7 +399,7 @@ def betterEvaluationFunction(currentGameState):
             score += 20.0 / distance * 5.0
           elif (ghostState.scaredTimer <= 3):
             # The ghost is about to get back to normal, start avoiding
-            score -= 10.0 * 5.0 / ghostState.scaredTimer
+            score -= 20.0 * 5.0 / ghostState.scaredTimer
           else:
             # It is not possible to eat the within scared time since it is too far.
             continue
@@ -417,8 +416,7 @@ def betterEvaluationFunction(currentGameState):
         score -= 100 * 10.0 / distanceToGhost
       else:
         score -= 15.0 / distanceToGhost
-  return score
-  # BEGIN_YOUR_CODE (around 50 lines of code expected) 
+  return score 
   # END_YOUR_CODE
 
 # Abbreviation

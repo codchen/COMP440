@@ -57,7 +57,7 @@ def test0(agentName):
 grader.addBasicPart('3.2b', lambda : test0('minimax'), 20)
 grader.addBasicPart('3.3b', lambda : test0('alphabeta'), 10)
 grader.addBasicPart('3.4', lambda : test0('expectimax'), 25)
-# grader.addBasicPart('3.5', lambda : test0('evalfn'), 15)
+grader.addBasicPart('3.5', lambda : test0('evalfn'), 15)
 
 
 grader.grade()

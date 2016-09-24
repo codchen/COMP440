@@ -1,4 +1,4 @@
-maxTotalPoints: 65
+maxTotalPoints: 80
 messages: []
 mode: all
 parts:
@@ -26,4 +26,10 @@ parts:
   name: '3.4'
   points: 25
   seconds: 0
-totalPoints: 55
+- maxPoints: 15
+  maxSeconds: 1
+  messages: []
+  name: '3.5'
+  points: 15
+  seconds: 0
+totalPoints: 70

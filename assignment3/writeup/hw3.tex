@@ -23,40 +23,58 @@
     	\begin{tabular}{| l | c | c | c | c | r |}
 	\hline
 	& 1 & 2 & 3 & 4 & 5 \\ \hline
-	$V^{\pi_0}$ & 20 & 20 & 20 & 20 & 20 \\ \hline
-	$V^{\pi_1}$ & 50 & 40 & 30 & 20 & 20 \\ \hline
-	$V^{\pi_2}$ & 60 & 50 & 40 & 30 & 20 \\ \hline
-	$V^{*}$ & 60 & 50 & 40 & 30 & 20 \\
+	$V^{\pi_0}$ & 20 & 30 & 30 & 30 & 30 \\ \hline
+	$V^{\pi_1}$ & 50 & 50 & 40 & 30 & 30 \\ \hline
+	$V^{\pi_2}$ & 60 & 60 & 50 & 40 & 30 \\ \hline
+	$V^{*}$ & 60 & 60 & 50 & 40 & 30 \\
+	\hline
+	\end{tabular}
+    \end{center}
+    \item This table will be used for the following three sub-problems:
+    \begin{center}
+    	\begin{tabular}{| l | c | c | c | c | r |}
+	\hline
+	& 1 & 2 & 3 & 4 & 5 \\ \hline
+	$V^{\pi_0}$ & 20$\lambda$ & 10 + 20$\lambda$ & 10 + 20$\lambda$ & 10 + 20$\lambda$ & 10 + 20$\lambda$ \\ \hline
+	$V^{\pi_1}$ & 10$\lambda$ + 10$\lambda^2$ + 10$\lambda^3$ + 20$\lambda^4$ & 10 + 10$\lambda$ + 10$\lambda^2$ + 20$\lambda^3$ & 10 + 10$\lambda$ + 20$\lambda^2$ & 10 + 20$\lambda$ & 10 + 20$\lambda$ \\ \hline
+	$V^{\pi_2}$ & 10$\lambda$ + 10$\lambda^2$ + 10$\lambda^3$ & 10 + 10$\lambda$ + 10$\lambda^2$ & 10 + 10$\lambda$ & 10 + 10$\lambda$ & 10 + 20$\lambda$ \\
+	& + 10$\lambda^4$ + 20$\lambda^5$ & + 10$\lambda^3$ + 20$\lambda^4$ & + 10$\lambda^2$ + 20$\lambda^3$ & + 20$\lambda^2$ & \\
+	\hline
+	\end{tabular}
+    \end{center}
+    If such $\lambda$ exists, it must enable every cell in row one to be greater than or equal to the cells in row two and three of the same column, at least one column of row one is better than row two, and at least one column of row one is better than row three.\\
+    We can see that for any $0 \leq \lambda < 0.5$, for example, $\lambda = 0.25$, $\pi_0$ is strictly better than the other two:
+     \begin{center}
+    	\begin{tabular}{| l | c | c | c | c | r |}
+	\hline
+	& 1 & 2 & 3 & 4 & 5 \\ \hline
+	$V^{\pi_0}$ & 5 & 15 & 15 & 15 & 15 \\ \hline
+	$V^{\pi_1}$ & 3.36 & 13.44 & 13.75 & 15 & 15 \\ \hline
+	$V^{\pi_2}$ & 3.34 & 13.36 & 13.44 & 13.75 & 15 \\
 	\hline
 	\end{tabular}
     \end{center}
     \item If such $\lambda$ exists, it must satisfy:
     \begin{eqnarray*}
-    20 &>& 10 + 10\lambda + 10\lambda^2 + 20\lambda^3
+    10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4 &>& 20\lambda
     \end{eqnarray*}
     and
     \begin{eqnarray*}
-    20 &>& 10 + 10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4
-    \end{eqnarray*}
-    We can see that for any $0 \leq \lambda < 0.5$, for example, $\lambda = 0.25$, $\pi_0$ is strictly better than the other two.
-    \item If such $\lambda$ exists, it must satisfy:
-    \begin{eqnarray*}
-    10 + 10\lambda + 10\lambda^2 + 20\lambda^3 &>& 20
-    \end{eqnarray*}
-    and
-    \begin{eqnarray*}
-    10 + 10\lambda + 10\lambda^2 + 20\lambda^3 &>& 10 + 10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4
+    10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4 &>& 10\lambda + 10\lambda^2 + 10\lambda^3 + 10\lambda^4 + 20\lambda^5
     \end{eqnarray*}
     The first inequality requires $\lambda > 0.5$ while the second requires $\lambda < 0.5$, so none such $\lambda$ exists.
-    \item If such $\lambda$ exists, it must satisfy:
-    \begin{eqnarray*}
-    10 + 10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4 &>& 20
-    \end{eqnarray*}
-    and
-    \begin{eqnarray*}
-    10 + 10\lambda + 10\lambda^2 + 10\lambda^3 + 20\lambda^4 &>& 10 + 10\lambda + 10\lambda^2 + 20\lambda^3
-    \end{eqnarray*}
-    We can see that for any $0.5 < \lambda \leq 1$, for example, $\lambda = 0.75$, $\pi_2$ is strictly better than the other two.
+    \item If such $\lambda$ exists, it must enable every cell in row three to be greater than or equal to the cells in row one and two of the same column, at least one column of row three is better than row one, and at least one column of row three is better than row two.\\
+    We can see that for any $0.5 < \lambda \leq 1$, for example, $\lambda = 0.75$, $\pi_2$ is strictly better than the other two:
+     \begin{center}
+    	\begin{tabular}{| l | c | c | c | c | r |}
+	\hline
+	& 1 & 2 & 3 & 4 & 5 \\ \hline
+	$V^{\pi_0}$ & 15 & 25 & 25 & 25 & 25 \\ \hline
+	$V^{\pi_1}$ & 23.67 & 31.56 & 28.75 & 25 & 25 \\ \hline
+	$V^{\pi_2}$ & 25.25 & 33.67 & 31.56 & 28.75 & 25 \\
+	\hline
+	\end{tabular}
+    \end{center}
     \end{itemize}
 \section{Policy iteration}
 \begin{itemize}

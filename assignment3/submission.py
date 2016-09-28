@@ -222,6 +222,7 @@ class BlackjackMDP(util.MDP):
                 value = state[0] + self.cardValues[state[1]]
                 if (value > self.threshold):
                     newState = (value, None, (0,))
+                    return [(newState, 1.0, 0)]
                 else:
                     newState = (value, None, tuple(cards))
                     # not any(cards) is True iff cards are all 0

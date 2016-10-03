@@ -52,5 +52,8 @@
 	 \item
 	 
 \end{itemize}
+\section{Constrait solving and course scheduling}
+\section{Sudoku and repair algorithms}
+A local solver using the min-conflicts heuristic would not do very well on Sudoku problems. For the min-conflicts heuristic, the algorithm generates a random initial state and then picks a random variable and tries to change it to a value that can satisfy most constraints. First, for variables that have only 1 unique value in the solution if we use forward checking and enforce arc consistency, repairing algorithm with min-conflicts heuristic does not neccessarily fix the variable to that unique value. Second, since for each variable the constraits are associated with all the variables in the entire row, column and box, it is very likely that fixing a value to satisfy some constraits in a box will cause violation on constraits on the row or column, so a min-conflicts heuristic does not do much for us as there are not many frequent changes to constrait in this problem. Third, repairing algorithms are not complete, which means it is possible that it may not give us a solution when there exists one, while a constructive approach is guaranteed to give us a solution if there is one given enough amount of time. So I would recommend a constructive approach for solving Sudoku.
 \end{onehalfspace}
 \end{document}

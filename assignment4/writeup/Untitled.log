@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  3 OCT 2016 15:26
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  3 OCT 2016 15:48
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -401,6 +405,11 @@ een; green\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (\OML/cm
 m/m/it/10.95 blue; green; green\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;$ 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--65
+
+ []
+
 [2] (./Untitled.aux) ) 
 Here is how much of TeX's memory you used:
  5664 strings out of 493315
@@ -419,7 +428,11 @@ ts/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts
 m/cmr17.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb>
+<<<<<<< Updated upstream
 Output written on Untitled.pdf (2 pages, 97745 bytes).
+=======
+Output written on Untitled.pdf (2 pages, 97776 bytes).
+>>>>>>> Stashed changes
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream

@@ -50,7 +50,20 @@
 	 The initial domain of $A$: $\{(red,red,red),(red,red,blue),(red,red,green),(red,blue,red),$\\$(red,blue,blue),(red,blue,green),(red,green,red),(red,green,blue),(red,green,green),$\\$(blue,red,red),(blue,red,blue),(blue,red,green),(blue,blue,red),(blue,blue,blue),(blue,blue,green),$\\$(blue,green,red),(blue,green,blue),(blue,green,green),(green,red,red),(green,red,blue),$\\$(green,red,green),(green,blue,red),(green,blue,blue),(green,blue,green),(green,green,red),$\\$(green,green,blue),(green,green,green)\}$.
 	 After enforcing consistent over the unary factor on each possible value from $A$'s original domain, $A$'s domain becomes $\{(red,green,green),(blue,green,green),$\\$(green,red,green),(green,blue,green),(green,green,red),(green,green,blue)\}$.
 	 \item
-	 
+	 Variables are $X_{ij}$ where $1 \leq i,j \leq 3$ without $X_{22}$.\\
+	 Domain for each variable is $\{C,A,P,T,I,N,E\}$\\
+	 Factors are:\\
+	 $w_1 = Cat(X_{11},X_{12},X_{13})$\\
+	 $w_2 = Cat(X_{11},X_{21},X_{31})$\\
+	 $w_3 = Cat(X_{31},X_{32},X_{33})$\\
+	 $w_4 = Cat(X_{13},X_{23},X_{33})$\\
+	 $w_1 \in D$\\
+	 $w_2 \in D$\\
+	 $w_3 \in D$\\
+	 $w_4 \in D$
+	 \item
+	 Each auxiliary variable will represent one of the four top-down/left-right stripe.\\
+	 Each auxiliary variable's domain is the possible solution on stripe that auxiliary variable stands for.
 \end{itemize}
 \section{Constrait solving and course scheduling}
 \section{Sudoku and repair algorithms}

@@ -1,0 +1,22 @@
+# Unit limit per semester. You can ignore this for the first
+# few questions in problem 3
+minUnits 1
+maxUnits 8
+
+# These are the semesters that I need to fill out.
+# It is assumed that the semesters are sorted in chronological order.
+register Fall2013
+register Fall2015
+register Fall2016
+
+
+# Courses I've already taken
+taken COMP140
+taken COMP182
+taken COMP221
+
+# Courses that I'm requesting
+request COMP215 weight 5
+request COMP221
+request COMP310 in Fall2015 after COMP215 weight 5
+request COMP440 in Fall2016 weight 5

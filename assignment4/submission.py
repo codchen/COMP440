@@ -1,4 +1,4 @@
-import collections, util, copy
+import collections, util, copy, itertools
 
 ############################################################
 # Problem 3.1a
@@ -15,7 +15,15 @@ def create_nqueens_csp(n = 8):
     """
     csp = util.CSP()
     # BEGIN_YOUR_CODE (around 7 lines of code expected)
-    raise Exception("Not implemented yet")
+    cols = range(n)
+    rows = range(n)
+    for var in cols:
+        csp.add_variable(var, rows)
+    for var1 in cols:
+        for var2 in cols:
+            if (var1 != var2):
+                csp.add_binary_potential(var1, var2, lambda x, y : x != y)
+                csp.add_binary_potential(var1, var2, lambda x, y : abs(x - y) != abs(var1 - var2))
     # END_YOUR_CODE
     return csp
 
@@ -188,7 +196,16 @@ class BacktrackingSearch():
             # Problem 3.1d
             # When arc consistency check is enabled.
             # BEGIN_YOUR_CODE (around 10 lines of code expected)
-            raise Exception("Not implemented yet")
+            for val in ordered_values:
+                deltaWeight = self.get_delta_weight(assignment, var, val)
+                if deltaWeight > 0:
+                    assignment[var] = val
+                    old_domain = copy.deepcopy(self.domains)
+                    self.domains[var] = [val]
+                    self.arc_consistency_check(var)
+                    self.backtrack(assignment, numAssigned + 1, weight * deltaWeight)
+                    self.domains = old_domain
+                    assignment[var] = None
             # END_YOUR_CODE
 
     def get_unassigned_variable(self, assignment):
@@ -211,7 +228,18 @@ class BacktrackingSearch():
             # Heuristic: most constrained variable (MCV)
             # Select a variable with the least number of remaining domain values.
             # BEGIN_YOUR_CODE (around 7 lines of code expected)
-            raise Exception("Not implemented yet")
+            mcv = -1
+            minConsistent = float("inf")
+            for var in range(len(assignment)):
+                if assignment[var] is None:
+                    numConsistent = 0
+                    for val in self.domains[var]:
+                        if self.get_delta_weight(assignment, var, val) > 0:
+                            numConsistent += 1
+                    if (minConsistent > numConsistent):
+                        minConsistent = numConsistent
+                        mcv = var
+            return mcv
             # END_YOUR_CODE
 
     def get_ordered_values(self, assignment, var):
@@ -238,7 +266,24 @@ class BacktrackingSearch():
             # constraints imposed on unassigned neighboring variables.
             # BEGIN_YOUR_CODE (around 17 lines of code expected)
             # Will update the domains! The unary constraint on var, val was already checked by backtrack before calling this method
-            raise Exception("Not implemented yet")
+            removal = {}
+            neighbors = {}
+            for nbr in self.csp.binaryPotentials[var]:
+                if assignment[nbr] is None:
+                    neighbors[nbr] = []
+                    for nbr_val in self.domains[nbr]:
+                        if (self.get_delta_weight(assignment, nbr, nbr_val)) > 0:
+                            neighbors[nbr].append(nbr_val)
+            for val in self.domains[var]:
+                removal[val] = 0
+                for nbr in neighbors:
+                    numConsistent = 0
+                    for nbr_val in neighbors[nbr]:
+                        if (self.csp.binaryPotentials[var][nbr][val][nbr_val] > 0):
+                            numConsistent += 1
+                    removal[val] += len(neighbors[nbr]) - numConsistent
+            return sorted(removal, key=removal.get)
+
             # END_YOUR_CODE
    
     def arc_consistency_check(self, var):
@@ -281,7 +326,29 @@ class BacktrackingSearch():
         """
         # Problem 3.1d
         # BEGIN_YOUR_CODE (around 17 lines of code expected)
-        raise Exception("Not implemented yet")
+        assert len(self.domains[var]) == 1
+        changed_vars = set()
+        changed_vars.add(var)
+        while len(changed_vars) > 0:
+            changed_var = changed_vars.pop()
+            old_domain = copy.deepcopy(self.domains)
+            for nbr in self.csp.binaryPotentials[changed_var]:
+                remove_vals = []
+                for nbr_val in self.domains[nbr]:
+                    inconsistent = True
+                    for val in self.domains[changed_var]:
+                        # print "Val " + str(val)
+                        # print "Nbr " + str(nbr)
+                        # print "Var " + str(var)
+                        if self.csp.binaryPotentials[changed_var][nbr][val][nbr_val] > 0:
+                            inconsistent = False
+                            break
+                    if inconsistent:
+                        remove_vals.append(nbr_val)
+                for val in remove_vals:
+                    self.domains[nbr].remove(val)
+                if (old_domain[nbr] != self.domains[nbr]):
+                    changed_vars.add(nbr)
         # END_YOUR_CODE
 
 ############################################################
@@ -308,7 +375,26 @@ def get_sum_variable(csp, name, variables, maxSum):
     """
 
     # BEGIN_YOUR_CODE (around 18 lines of code expected)
-    raise Exception("Not implemented yet")
+    aux = str(name) + 'start'
+    csp.add_variable(aux, [(0, x) for x in range(maxSum + 1)])
+    for i in range(len(variables)):
+        var = variables[i]
+        csp.add_binary_potential(aux, var, lambda x, y: x[1] == x[0] + y)
+        if (i + 1 == len(variables)):
+            sumVar = name + 'end'
+            csp.add_variable(sumVar, range(0, maxSum + 1))
+            csp.add_binary_potential(aux, sumVar, lambda x, y: x[1] == y)
+            csp.add_unary_potential(sumVar, lambda x : x <= maxSum)
+            return sumVar
+        aux_next = str(name) + str(var)
+        domain = []
+        for i in range(maxSum + 1):
+            for j in range(maxSum + 1):
+                if (j >= i):
+                    domain.append((i, j))
+        csp.add_variable(aux_next, domain)
+        csp.add_binary_potential(aux, aux_next, lambda x, y : x[1] == y[0])
+        aux = aux_next
     # END_YOUR_CODE
 
 ############################################################
@@ -384,7 +470,11 @@ class SchedulingCSPConstructor():
         @param csp: The CSP where the additional constraints will be added to.
         """
         # BEGIN_YOUR_CODE (around 4 lines of code expected)      
-        raise Exception("Not implemented yet")
+        for req in self.profile.requests:
+            for cid in req.cids:
+                if len(req.semesters) > 0:
+                    csp.add_unary_potential(cid, \
+                        lambda semester: semester in req.semesters or semester is None)
         # END_YOUR_CODE
 
     def add_request_weights(self, csp):
@@ -397,7 +487,9 @@ class SchedulingCSPConstructor():
         @param csp: The CSP where the additional constraints will be added to.
         """
         # BEGIN_YOUR_CODE (around 3 lines of code expected)      
-        raise Exception("Not implemented yet")
+        for req in self.profile.requests:
+            for cid in req.cids:
+                csp.add_unary_potential(cid, lambda semester: req.weight if semester is not None else 1.0)
         # END_YOUR_CODE
 
     def add_prereq_constraints(self, csp):
@@ -414,8 +506,23 @@ class SchedulingCSPConstructor():
 
         @param csp: The CSP where the additional constraints will be added to.
         """
-        # BEGIN_YOUR_CODE (around 25 lines of code expected)      
-        raise Exception("Not implemented yet")
+        # BEGIN_YOUR_CODE (around 25 lines of code expected)   
+        def checkSemester(req_semester, prereq_semester):
+            if req_semester is None:
+                return True
+            elif prereq_semester is None:
+                return False
+            req_year = int(req_semester[-4:])
+            prereq_year = int(prereq_semester[-4:])
+            if (req_year == prereq_year):
+                if (req_semester[0] == 'F' and prereq_semester[0] == 'S'): return True
+                return False
+            return req_year > prereq_year
+
+        for req in self.profile.requests:
+            for cid in req.cids:
+                for cid2 in req.prereqs:
+                    csp.add_binary_potential(cid, cid2, lambda req, prereq : checkSemester(req, prereq))
         # END_YOUR_CODE
 
     def add_unit_constraints(self, csp):
@@ -448,7 +555,29 @@ class SchedulingCSPConstructor():
         @param csp: The CSP where the additional constraints will be added to.
         """
         # BEGIN_YOUR_CODE (around 16 lines of code expected)
-        raise Exception("Not implemented yet")
+        minUnit = self.profile.minUnits
+        maxUnit = self.profile.maxUnits
+        variables = {}
+        unit = {}
+        for semester in self.profile.semesters:
+            variables[semester] = []
+            for cid in csp.varNames:
+                if (type(cid) == type('str')):
+                    course = self.bulletin.courses[cid]
+                    var = ((cid, semester))
+                    variables[semester].append(var)
+                    csp.add_variable(var, [0] + range(course.minUnits, course.maxUnits + 1))
+        for cid in csp.varNames:
+            if (type(cid) == type('str')):
+                for var in csp.varNames:
+                    if (type(var) == type(tuple())):
+                        if (cid == var[0]):
+                            csp.add_binary_potential(cid, var, lambda x, y: y > 0 if x == var[1] else y == 0)
+        for semester in variables:
+            prefix = 'sum' + semester
+            unit[semester] = get_sum_variable(csp, prefix, variables[semester], maxUnit)
+        for semester in unit:
+            csp.add_unary_potential(unit[semester], lambda n: n in range(minUnit, maxUnit + 1))
         # END_YOUR_CODE
 
     def add_all_additional_constraints(self, csp):
@@ -461,3 +590,4 @@ class SchedulingCSPConstructor():
         self.add_request_weights(csp)
         self.add_prereq_constraints(csp)
         self.add_unit_constraints(csp)
+

@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[]{algorithm2e}
+\usepackage{amsmath}
+\usepackage[noend]{algpseudocode}
+\usepackage{float}
+\title{COMP 440 Homework 5}
+\author{Tony Chen(xc12) and Adam Wang(sw33)}
+\date{October 2016}
+\begin{document}
+\begin{onehalfspace}
+\maketitle{}
+\section{Bayesian networks for astronomy}
+\begin{itemize}
+	\item
+	Based on the above information, it can be seen that $M_1$ and $N$, $M_2$ and $N$, $F_1$ and $N$, $F_2$ and $N$ are pairs that conditionally dependent on each other. So the first network is incorrect since $F_1$ and $N$, $F_2$ and $N$ would become conditionally independent in that case. The second and the third network are correct.
+	\item
+	The second network is the best.\\
+	Because it represents a more realistic conditional dependency: each measurement depends on both the true number of stars and whether the focus is bad. Consequently, the second network is also simpler than the third network.
+	\item
+	\begin{eqnarray*}
+	P(M_1|N) &=& P(M_1|N,F_1)P(F_1|N)+P(M_1|N,\neg F_1)P(\neg F_1|N)\\
+	&=& P(M_1|N,F_1)P(F_1) + P(M_1|N,\neg F_1)P(\neg F_1)
+	\end{eqnarray*}
+	\begin{center}
+	  \begin{tabular}{l | c | c | r}
+	  & $N = 1$ & $N = 2$ & $N = 3$\\ \hline
+	  $M_1 = 0$ & $f + e(1 - f)$ & $f$ & $f$\\
+	  $M_1 = 1$ & $(1-2e)(1-f)$ & $e(1-f)$ & $0$\\
+	  $M_1 = 2$ & $e(1-f)$ & $(1-2e)(1-f)$ & $e(1-f)$\\
+	  $M_1 = 3$ & $0$ & $e(1-f)$ & $(1-2e)(1-f)$\\
+	  $M_1 = 4$ & $0$ & $0$ & $e(1-f)$
+	  \end{tabular}
+	\end{center}
+	\item
+	If we only consider the result $M_1 = 1$, then the possible numbers of $N$ are $\{0,1,2,\geq 4\}$.\\
+	If we only consider the result $M_2 = 3$, then the possible numbers of $N$ are $\{2,3,4,\geq 6\}$.\\
+	So the possible number of $N$ is $2$ or $4$ or any integer greater than or equal to $6$.
+	\item
+	We need to know that the event of a telescope having one-off measurement mistake is independent of that same telescope having a bad focus, and also that the two telescopes are independent of each other. The following analysis is made based on this independence assumption.\\
+	The only combination of events that can let $N=2$ is when both telescopes had good focuses and $M_1$ counted one down while $M_2$ counted one up. So the probability of this happening is $(1-f)^2e^2$.\\
+	The only combination of events that can let $N=4$ is when $M_1$ had a bad focus and $M_2$ had a good focus but got the one-off mistake. So the probability of this happening is $f(1-f)e$.\\
+	When $N \geq 4$, both telescopes had bad focuses. So the probability of this happening is $f^2$.\\
+	Given the statement that $e$ is small and $f$ is much smaller, it is safe to assume that $0.5 > e >> f$. So $(1-f)^2e^2$ is the largest probability, which makes the most likely number of stars $2$.
+\end{itemize}
+\section{Gibbs Sampling}
+\begin{itemize}
+	\item
+	
+	\item
+\end{itemize}
+\section{Tracking cars by particle filtering}
+\section{Bayesian networks for predicting the 2016 presidential elections}
+\end{onehalfspace}
+\end{document}

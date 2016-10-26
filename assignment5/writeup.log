@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  24 OCT 2016 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.17)  25 OCT 2016 14:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -375,28 +375,79 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
  [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./
-writeup.aux) ) 
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (20.53171pt too wide) in alignment at lines 55--64
+ [][][] []
+ []
+
+
+Overfull \hbox (21.24268pt too wide) in alignment at lines 65--74
+ [][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--99
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
+Overfull \hbox (42.37791pt too wide) in paragraph at lines 121--126
+\OT1/cmr/m/n/10.95 When $\OML/cmm/m/it/10.95 N \OT1/cmr/m/n/10.95 = 1000$, the 
+prob-a-bil-i-ties of the four states are: $0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/1
+0.95 64737659\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT
+1/cmr/m/n/10.95 17794021\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it
+/10.95 :\OT1/cmr/m/n/10.95 03235323\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\O
+ML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 14232997$,
+ []
+
+
+Overfull \hbox (42.37791pt too wide) in paragraph at lines 121--126
+\OT1/cmr/m/n/10.95 When $\OML/cmm/m/it/10.95 N \OT1/cmr/m/n/10.95 = 5000$, the 
+prob-a-bil-i-ties of the four states are: $0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/1
+0.95 64737659\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT
+1/cmr/m/n/10.95 17794021\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it
+/10.95 :\OT1/cmr/m/n/10.95 03235323\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\O
+ML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 14232997$,
+ []
+
+
+Overfull \hbox (47.85292pt too wide) in paragraph at lines 121--126
+\OT1/cmr/m/n/10.95 When $\OML/cmm/m/it/10.95 N \OT1/cmr/m/n/10.95 = 10000$, the
+ prob-a-bil-i-ties of the four states are: $0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/
+10.95 64737659\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\O
+T1/cmr/m/n/10.95 17794021\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\OML/cmm/m/i
+t/10.95 :\OT1/cmr/m/n/10.95 03235323\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0\
+OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 14232997$,
+ []
+
+[3] (./writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 5662 strings out of 493089
- 83685 string characters out of 6134842
- 181684 words of memory out of 5000000
- 9087 multiletter control sequences out of 15000+600000
- 9094 words of font info for 33 fonts, out of 8000000 for 9000
+ 5664 strings out of 493089
+ 83709 string characters out of 6134842
+ 188684 words of memory out of 5000000
+ 9088 multiletter control sequences out of 15000+600000
+ 9402 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,38p,420b,265s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b>
-Output written on writeup.pdf (2 pages, 82818 bytes).
+ 38i,7n,38p,420b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb>
+Output written on writeup.pdf (3 pages, 107040 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 50 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

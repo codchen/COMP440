@@ -52,8 +52,78 @@
 \section{Gibbs Sampling}
 \begin{itemize}
 	\item
-	
+	\begin{eqnarray*}
+	  P(R=T,S=T,W=T) &=& P(R=T,S=T,W=T|C=T)P(C=T)+\\
+	  &&P(R=T,S=T,W=T|C=F)P(C=F)\\
+	  &=& P(W=T|R=T,S=T)P(S=T,R=T|C=T)P(C=T)+\\
+	  &&P(W=T|R=T,S=T)P(S=T,R=T|C=F)P(C=F)\\
+	  &=& P(W=T|R=T,S=T)P(S=T|C=T)P(R=T|C=T)P(C=T)+\\
+	  &&P(W=T|R=T,S=T)P(S=T|C=F)P(R=T|C=F)P(C=F)\\
+	  &=& 0.99*0.1*0.8*0.5+0.99*0.5*0.2*0.5\\
+	  &=& 0.0891
+	\end{eqnarray*}
+	\begin{eqnarray*}
+	  P(R=F,S=T,W=T) &=& P(R=F,S=T,W=T|C=T)P(C=T)+\\
+	  &&P(R=F,S=T,W=T|C=F)P(C=F)\\
+	  &=& P(W=T|R=F,S=T)P(S=T,R=F|C=T)P(C=T)+\\
+	  &&P(W=T|R=F,S=T)P(S=T,R=F|C=F)P(C=F)\\
+	  &=& P(W=T|R=F,S=T)P(S=T|C=T)P(R=F|C=T)P(C=T)+\\
+	  &&P(W=T|R=F,S=T)P(S=T|C=F)P(R=F|C=F)P(C=F)\\
+	  &=& 0.9*0.1*0.2*0.5+0.9*0.5*0.8*0.5\\
+	  &=& 0.189
+	\end{eqnarray*}
+	\begin{eqnarray*}
+	  P(R|S=T,W=T) &=& \frac{P(R=T,S=T,W=T)}{P(S=T,W=T)}\\
+	  &=& \frac{P(R=T,S=T,W=T)}{P(R=T,S=T,W=T)+P(R=F,S=T,W=T)}\\
+	  &=& \frac{0.0891}{0.0891+0.189}\\
+	  &=& 0.3204
+	\end{eqnarray*}
 	\item
+	\begin{itemize}
+	  \item
+	  There are four states: $\{(C=F,R=F),(C=F,R=T),(C=T,R=F),(C=T,R=T)\}$
+	  \item
+	  We have the following probabilities computed:\\
+	  $P(C=F,S=T,W=T,R=F)=0.5*0.5*0.8*0.9=0.18$\\
+	  $P(C=F,S=T,W=T,R=T)=0.5*0.5*0.2*0.99=0.0495$\\
+	  $P(C=T,S=T,W=T,R=F)=0.5*0.1*0.2*0.9=0.009$\\
+	  $P(C=T,S=T,W=T,R=T)=0.5*0.1*0.8*0.99=0.0396$\\
+	  $P(C=F|S=T,W=T,R=F)=\frac{P(C=F,S=T,W=T,R=F)}{P(C=F,S=T,W=T,R=F)+P(C=T,S=T,W=T,R=F)}=0.9524$\\
+	  $P(C=T|S=T,W=T,R=F)=\frac{P(C=T,S=T,W=T,R=F)}{P(C=F,S=T,W=T,R=F)+P(C=T,S=T,W=T,R=F)}=0.0476$\\
+	  $P(C=F|S=T,W=T,R=T)=\frac{P(C=F,S=T,W=T,R=T)}{P(C=F,S=T,W=T,R=T)+P(C=T,S=T,W=T,R=T)}=0.5556$\\
+	  $P(C=T|S=T,W=T,R=T)=\frac{P(C=T,S=T,W=T,R=T)}{P(C=F,S=T,W=T,R=T)+P(C=T,S=T,W=T,R=T)}=0.4444$\\
+	  $P(R=F|S=T,W=T,C=F)=\frac{P(C=F,S=T,W=T,R=F)}{P(C=F,S=T,W=T,R=F)+P(C=F,S=T,W=T,R=T)}=0.7843$\\
+	  $P(R=T|S=T,W=T,C=F)=\frac{P(C=F,S=T,W=T,R=T)}{P(C=F,S=T,W=T,R=F)+P(C=F,S=T,W=T,R=T)}=0.2157$\\
+	  $P(R=F|S=T,W=T,C=T)=\frac{P(C=T,S=T,W=T,R=F)}{P(C=T,S=T,W=T,R=F)+P(C=T,S=T,W=T,R=T)}=0.1852$\\
+	  $P(R=T|S=T,W=T,C=T)=\frac{P(C=T,S=T,W=T,R=T)}{P(C=T,S=T,W=T,R=F)+P(C=T,S=T,W=T,R=T)}=0.8148$\\
+	  \begin{center}
+	    \begin{tabular}{l | c | c | c | r}
+	     & (C=F,R=F) & (C=F,R=T) & (C=T,R=F) & (C=T,R=T)\\ \hline
+	     (C=F,R=F) & 0.8684 & 0.1078 & 0.0238 & 0\\
+	     (C=F,R=T) & 0.3922 & 0.3856 & 0 & 0.2222\\
+	     (C=T,R=F) & 0.4762 & 0 & 0.1164 & 0.4074\\
+	     (C=T,R=T) & 0 & 0.2778 & 0.0926 & 0.6296\\
+	    \end{tabular}
+	  \end{center}
+	  \item
+	  $Q^n$ is the following matrix:\\
+	  \begin{center}
+	    \begin{tabular}{l | c | c | c | r}
+	    & (C=F,R=F) & (C=F,R=T) & (C=T,R=F) & (C=T,R=T)\\ \hline
+	     (C=F,R=F) & 0.64737659 &  0.17794021 &  0.03235323 &  0.14232997\\
+	     (C=F,R=T) & 0.64737659 &  0.17794021 &  0.03235323 &  0.14232997\\
+	     (C=T,R=F) & 0.64737659 &  0.17794021 &  0.03235323 &  0.14232997\\
+	     (C=T,R=T) & 0.64737659 &  0.17794021 &  0.03235323 &  0.14232997\\
+	    \end{tabular}
+	  \end{center}
+	  It can be seen that $Q(,C(C=F,R=T)) + Q(,C(C=T,R=T)) = 0.3203$, which is basically the same as the answer to part (a). This is as expected since these two columns combined represent $P(R=T|S=T,W=T)$.
+	\item
+	*The code used is appended in file p2.py.\\
+	When $N=1000$, the probabilities of the four states are: $0.64737659,0.17794021,0.03235323,0.14232997$, which gives $P(R=T|S=T,W=T)=0.3203$.\\
+	When $N=5000$, the probabilities of the four states are: $0.64737659,0.17794021,0.03235323,0.14232997$, which gives $P(R=T|S=T,W=T)=0.3203$.\\
+	When $N=10000$, the probabilities of the four states are: $0.64737659,0.17794021,0.03235323,0.14232997$, which gives $P(R=T|S=T,W=T)=0.3203$.\\
+	My guess for the burn-in period of this Markov chain is 100.
+	\end{itemize}
 \end{itemize}
 \section{Tracking cars by particle filtering}
 \section{Bayesian networks for predicting the 2016 presidential elections}

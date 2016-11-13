@@ -92,5 +92,13 @@ P(y_t|y_{-t},x;\theta) &=& \frac{G_t(y_{t-1},y_t|x;\theta)}{\sum_{y'\in Y}G_t(y_
 \end{eqnarray*}
 
 \section{Decision networks}
+\includegraphics[width=13cm, height=9cm]{pic.png}\\
+\begin{itemize}
+\item
+$U(b) = 2000 * P(p | b) - 100 = 2000 * (P(p | b, m) * P(m | b) + P(p | b, \neg m) * P(\neg m | b)) - 100 = 2000 * (0.9 * 0.9 + 0.5 * 0.1) - 100 = 1620$ \\
+$U(\neg b) = 2000 * P(p | \neg b) = 2000 * (P(p | \neg b, m) * P(m | \neg b) + P(p | \nge b, \neg m) * P(\neg m | \neg b)) = 2000 * (0.8 * 0.7 + 0.3 * 0.3) = 1300$ \\
+\item
+$U(b) > U(\neg b)$, so the optimal decision for Sam is to buy the book.
+\end{itemize}
 \end{onehalfspace}
 \end{document}

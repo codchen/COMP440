@@ -8,3 +8,5 @@ search/*
 A2Submit/*
 
 *.pyc
+assignment7/text_classification/data/*
+assignment7/image_classification/data/*

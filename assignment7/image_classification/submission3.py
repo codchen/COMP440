@@ -36,6 +36,7 @@ def runKMeans(k,patches,maxIter):
           indices = np.where(z == j)[0]
           centroids[:, j] = np.mean(patches[:,indices], axis=1)
         # END_YOUR_CODE
+
     return centroids
 
 ############################################################
@@ -63,7 +64,7 @@ def extractFeatures(patches,centroids):
       feature = np.zeros((k,))
       p = patches[:, i]
       for j in range(k):
-        dist = np.mean()
+        dist = 0
         for K in range(k):
           miu = centroids[:, K]
           dist += np.linalg.norm(p - miu)

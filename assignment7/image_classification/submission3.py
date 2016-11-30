@@ -19,14 +19,23 @@ def runKMeans(k,patches,maxIter):
     # This line starts you out with randomly initialized centroids in a matrix 
     # with patchSize rows and k columns. Each column is a centroid.
     centroids = np.random.randn(patches.shape[0],k)
-
     numPatches = patches.shape[1]
-
+    # dimension is patches.shape[0]
     for i in range(maxIter):
         # BEGIN_YOUR_CODE (around 19 lines of code expected)
-        raise "Not yet implemented"
-        # END_YOUR_CODE
+        # Assignment Step
+        z = np.zeros((numPatches,), dtype=np.int)
 
+        for n in range(numPatches):
+          dist = np.zeros((k, ))
+          for j in range(k):
+            dist[j] = np.linalg.norm(patches[:, n] - centroids[:, j])
+          z[n] = np.argmin(dist)
+        # Update Step
+        for j in range(k):
+          indices = np.where(z == j)[0]
+          centroids[:, j] = np.mean(patches[:,indices], axis=1)
+        # END_YOUR_CODE
     return centroids
 
 ############################################################
@@ -50,7 +59,18 @@ def extractFeatures(patches,centroids):
     features = np.empty((numPatches,k))
 
     # BEGIN_YOUR_CODE (around 9 lines of code expected)
-    raise "Not yet implemented"
+    for i in range(numPatches):
+      feature = np.zeros((k,))
+      p = patches[:, i]
+      for j in range(k):
+        dist = np.mean()
+        for K in range(k):
+          miu = centroids[:, K]
+          dist += np.linalg.norm(p - miu)
+        dist /= k
+        dist -= np.linalg.norm(p - centroids[:, j])
+        feature[j] = max(dist, 0)
+      features[i] = feature
     # END_YOUR_CODE
     return features
 
@@ -72,7 +92,11 @@ def logisticGradient(theta,featureVector,y):
       1D numpy array of gradient of logistic loss w.r.t. to theta
     """
     # BEGIN_YOUR_CODE (around 2 lines of code expected)
-    raise "Not yet implemented."
+    d_theta = np.zeros(theta.shape)
+    yy = 2 * y - 1
+    for i in range(len(theta)):
+      d_theta[i] =  -featureVector[i] * yy * math.exp(-theta.dot(featureVector) * yy) / (1 + math.exp(-theta.dot(featureVector) * yy))
+    return d_theta
     # END_YOUR_CODE
 
 ############################################################
@@ -92,6 +116,11 @@ def hingeLossGradient(theta,featureVector,y):
       1D numpy array of gradient of hinge loss w.r.t. to theta
     """
     # BEGIN_YOUR_CODE (around 6 lines of code expected)
-    raise "Not yet implemented."
+    d_theta = np.zeros(theta.shape)
+    if (theta.dot(featureVector) * (2 * y - 1) >= 1):
+     return d_theta
+    for i in range(len(theta)):
+      d_theta[i] = -featureVector[i] * (2 * y - 1)
+    return d_theta
     # END_YOUR_CODE
 
